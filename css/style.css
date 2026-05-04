@@ -402,8 +402,7 @@ a {
   white-space: nowrap;
   border: 0;
   clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(100%);
-          clip-path: inset(100%);
+  clip-path: inset(100%);
 }
 
 /* Blocks */
@@ -798,38 +797,34 @@ a {
 .intro {
   position: relative;
   width: 100%;
-  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 69.07%, #000 100%), url("../../images/intro/intro-bg-desktop.jpg");
-  background-size: cover;
-  background-position: bottom;
   width: 100%;
   height: 740px;
-}
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
-  .intro {
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 69.07%, #000 100%), url("../../images/intro/intro-bg-desktop@2x.jpg");
-  }
+  overflow: hidden;
 }
 @media (max-width: 1023px) {
   .intro {
     height: 460px;
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 69.07%, #000 100%), url("../../images/intro/intro-bg-tablet.jpg");
-  }
-}
-@media (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1023px) and (min-resolution: 2dppx) {
-  .intro {
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 69.07%, #000 100%), url("../../images/intro/intro-bg-tablet@2x.jpg");
   }
 }
 @media (max-width: 767px) {
   .intro {
     height: 300px;
-    background-image: url("../../images/intro/intro-bg-mobile.jpg");
   }
 }
-@media (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) and (min-resolution: 2dppx) {
-  .intro {
-    background-image: url("../../images/intro/intro-bg-mobile@2x.jpg");
-  }
+.intro__picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.intro__image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
 }
 .intro__title {
   width: 800px;
@@ -845,6 +840,7 @@ a {
   text-transform: uppercase;
   text-align: center;
   color: #ffffff;
+  z-index: 2;
 }
 @media (max-width: 1023px) {
   .intro__title {
@@ -1278,10 +1274,12 @@ a {
   .details__numbers-item {
     min-height: unset;
     height: 100%;
-    gap: 0;
   }
   .details__numbers-item:nth-child(even) {
     justify-content: flex-start;
+  }
+  .details__numbers-item {
+    gap: 0;
   }
 }
 @media (max-width: 767px) {
